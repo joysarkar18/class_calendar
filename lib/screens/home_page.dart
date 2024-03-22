@@ -2,6 +2,7 @@ import 'package:class_calender/models/class_model.dart';
 import 'package:class_calender/screens/add_class_dialog.dart';
 import 'package:class_calender/utils/database.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class HomePage extends StatefulWidget {
@@ -65,9 +66,11 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    "Today's Classes",
-                    style: TextStyle(
+                  Text(
+                    selectedDate.day == DateTime.now().day
+                        ? "Today's Classes"
+                        : "${DateFormat.yMMMd().format(selectedDate)} Classes",
+                    style: const TextStyle(
                         color: Colors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.w500),
